@@ -1,0 +1,210 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+@keyframes expand{
+    0%{
+        transform: scale(0)
+    }
+    50%{
+        transform: scale(2);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+@keyframes expandtooltip{
+    0%{
+        transform: scale(0)
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+.appsquare {
+    transform: translate(-50%, -50%);
+    animation: expand 1s forwards;
+    color: white;
+    position :relative
+  }
+.appsquareanimate{
+    animation: expand 1s infinite;
+}
+.main-container{
+    display: block;
+    width:100%;
+    height:100%;
+    position:relative;
+    background-color: white;
+    color: white;
+}
+.container{
+    display: flex;
+    width:100%;
+    height:10vh;
+    background-color: #FF1694;
+    align-items: center;
+    color: white;
+    position: sticky;
+    text-decoration: none;
+    border-bottom: 2px solid #FF1694;
+}
+.getstarted{
+    display: block;
+    color:#FD5DA8;
+    position :absolute;
+    height:5%;
+    left:10%;
+}
+@keyframes Slide{
+    from{
+        transform: translateX(200px);
+    }
+}
+.titleeffect{
+    animation-name: Slide;
+    animation-duration: 2s;
+    animation-timing-function: ease;
+    animation-fill-mode:none ;
+    animation-direction: normal;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-play-state: running;
+}
+.navigation-bar{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    right:0;
+    align-items: center;
+    display: inline-flex;
+    font-family: 'Lobster', cursive;
+    justify-content: space-evenly;
+}
+.contactinfo{
+    display: flex;
+    width:100%;
+    height:60vh;
+    border:2px solid white;
+    border-radius: 0.3em;
+    background-color: #F25278;
+    color: white;
+    position: relative;
+    bottom: 0;
+}
+.CTA{
+    display:flex;
+    flex-direction: column;
+    margin-left:5%;
+    margin-right: 5%;
+    margin-top:2%;
+    width: 20%;
+}
+
+.ctaitems{
+    margin-top: 10px;
+}
+.contactus{
+    margin-top:2%;
+    display:flex;
+    
+}
+.icons{
+    position:absolute;
+    display:flex;
+    flex-direction: column;
+    right:49%;
+    top:12%;
+    align-items: center;
+    justify-content: space-evenly;
+    height:80%;
+    width:35%
+}
+.contacticons{
+    cursor: pointer;
+    user-select: none;
+}
+ .apptooltip{
+    position: absolute;
+    border-radius: .2em;
+    padding: 2px;
+    animation: expandtooltip 1s 1;
+    left:60%;
+    font-size: medium;
+}
+.rightsinfo{
+    display: flex;
+    font-family: '';
+    width:60%;
+    word-spacing: 5px;
+    align-items: center;
+    justify-content: center;
+}
+.highlight{
+    border-bottom: 3px solid;
+}
+.homeclass{
+    background-color: transparent;
+    width :100%;
+    display: flex;
+    flex-direction: column;
+}
+.ambience{
+    position:relative;
+    display:flex;
+    width:100%;
+    height:250px;
+    border-bottom: 2px solid #F25278;
+}
+.menu{
+    position:relative;
+    display: flex;
+    width:100%;
+    height:250px;
+    border-bottom: 2px solid #F25278;
+}
+.description{
+    display: block;
+    font-family: 'Lobster', cursive;
+    word-spacing: 5px;
+    background-color: transparent;
+    width: 60%;
+    height: 80%;
+    position :absolute;
+    top:10%;
+    border:10px solid #F25278;
+    border-radius:0.2em;
+    display:flex;
+    color: #FD5DA8;
+    flex-direction: column;
+}
+.amgdescription{
+    right:4%;
+}
+.menudescription{
+    left:4%;
+}
+.image{
+    background-color: transparent;
+    width: 30%;
+    height: 80%;
+    position :absolute;
+    top:10%;
+    border-radius:0.2em;
+    border:10px solid #F25278;
+    display:flex;
+}
+.ambimg{
+    left:4%;
+}
+.menuimg{
+    right:4%;
+}
+.heading{
+    text-align: center;
+    margin-top: 2%;
+}
+.para{
+    margin: 2%;
+}
