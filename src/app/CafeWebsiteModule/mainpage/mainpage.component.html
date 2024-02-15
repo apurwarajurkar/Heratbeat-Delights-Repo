@@ -1,0 +1,127 @@
+<div class="main-container">
+    <div class="container">
+        <div class="titleeffect" style=" font-family: 'Lobster', cursive;display: flex;cursor:text; user-select:none; margin-left: 20px;font-size: 1.4em;">Heartbeat Delights!</div>
+        <nav class="navigation-bar">
+            <span [ngClass]="{'highlight':SelectedTab == 'home'}" (click)="selectTab('home')" class="contacticons">Home</span>
+            <span [ngClass]="{'highlight':SelectedTab == 'about_us'}" (click)="selectTab('about_us')" class="contacticons">About us</span>
+            <span [ngClass]="{'highlight':SelectedTab == 'offers'}" (click)="selectTab('offers')" class="contacticons">Offers</span>
+            <span [ngClass]="{'highlight':SelectedTab == 'gallery'}" (click)="selectTab('gallery')" class="contacticons">Gallery</span>
+        </nav>
+    </div>
+   
+    <!-- <ng-container *ngFor='let item of countries'>
+        <section name="countries">
+            <option (click)="showcitydropdown(item.name)" value="item.name">{{item.name}}</option>
+        </section>
+    </ng-container>  
+    <ng-container>
+        <div *ngIf="selectedcountry == 'India'">
+            <section   *ngFor="let city of countries[0].cities">
+                <option value="item.cities">{{city}}</option>
+            </section>
+        </div>
+        <div *ngIf="selectedcountry == 'America'">
+            <section  *ngFor="let city of countries[1].cities" >
+                <option value="item.cities">{{city}}</option>
+            </section>
+        </div>
+        <div *ngIf="selectedcountry == 'Turkey'">
+            <section  *ngFor="let city of countries[2].cities" >
+                <option value="item.cities">{{city}}</option>
+            </section>
+        </div>
+    </ng-container> -->
+    <ng-container  *ngIf="SelectedTab == 'home'">
+        <div class="homeclass">
+            
+            <div class="menu">
+                <div class="description menudescription">
+                    <div class="heading"><h3>Welcome to Heartbeat Delights!</h3></div>
+                    <div class="para">Find the perfect gift for every occasion at Heartbeat Delights. Whether it's a birthday, anniversary, or Valentine's Day, we have curated a selection of thoughtful and personalized gifts that are sure to delight your loved ones.</div>
+                </div>
+                <div class="menuimg image"></div>
+            </div>
+            
+            <div class="ambience">
+                <div class="ambimg image">
+                <img src="https://github.com/apurwarajurkar/WebsiteRepo/blob/main/images/Greeting_Card.jpeg" alt="card"></div>
+                <div class="description amgdescription">
+                    <div class="heading"><h3>Customizable Greeting Cards: Make Every Message Memorable</h3></div>
+                    <div class="para">Create a lasting impression with our customizable greeting cards. Personalize your message and add a touch of love and creativity to your gift. Our unique cards are designed to convey your heartfelt sentiments in a special way.</div>
+                </div>
+            </div>
+            
+            <div class="menu">
+                <div class="description menudescription">
+                    <div class="heading"><h3>Gifts for Her: Thoughtful Treasures</h3></div>
+                    <div class="para">Explore our collection of gifts for her, featuring elegant jewelry, accessories, and pampering treats. From dainty earrings to luxurious perfumes, we have the perfect gifts to make her feel cherished and adored.</div>
+                </div>
+                <div class="menuimg image"></div>
+            </div>
+            <div class="ambience">
+                <div class="ambimg image">
+                </div>
+                <div class="description amgdescription">
+                    <div class="heading"><h3>Gifts for Him: Stylish Surprises</h3></div>
+                    <div class="para">Discover unique gifts for him, including sophisticated accessories and indulgent chocolates. From timeless wallets to irresistible fragrances, we have curated a selection of gifts that reflect his style and personality.</div>
+                </div>
+            </div>
+        </div>      
+        
+    </ng-container>
+    <ng-container *ngIf="SelectedTab == 'about_us'">
+        <app-about></app-about>
+      </ng-container>
+      <ng-container *ngIf="SelectedTab == 'gallery'">
+        <app-gallery></app-gallery>
+      </ng-container>
+      <ng-container *ngIf="SelectedTab == 'offers'">
+        <app-offers></app-offers>
+      </ng-container>
+      <div class="contactinfo">
+        <div class="CTA">
+            <div><h3>Explore Delights</h3></div>
+            <div class="ctaitems" *ngFor="let item of cta"><a style="padding:2px; text-decoration:none; color:white;" href="">{{item}}</a></div>
+        </div>
+        <div class="contactus">
+            <div><h3>Contact Us</h3></div>
+            <div></div>
+        
+        
+        <nav class="icons">
+            <span (mouseout)="hideContactDetails()" (mouseover)="showContactDetails('instagram')"
+             [ngClass]="{'appsquareanimate':isshowapp && SelectedApp == 'instagram'}" 
+             class="fa-brands fa-instagram contacticons appsquare" >
+            </span>
+            <div class="apptooltip" style="top:12%" *ngIf="isshowapp && SelectedApp == 'instagram'">_appssss_2406</div>
+            
+            
+            <span (mouseout)="hideContactDetails()" (mouseover)="showContactDetails('snapchat')"
+            [ngClass]="{'appsquareanimate':isshowapp && SelectedApp == 'snapchat'}" 
+             class="fa-brands fa-snapchat contacticons appsquare"  ></span>
+            <div class="apptooltip" style="top: 33%;" *ngIf="isshowapp && SelectedApp == 'snapchat'">apss2461</div>
+            
+            
+            <span (mouseout)="hideContactDetails()" (mouseover)="showContactDetails('youtube')"
+            [ngClass]="{'appsquareanimate':isshowapp && SelectedApp == 'youtube'}" 
+            class="fa-brands fa-youtube contacticons appsquare" ></span>
+            <div class="apptooltip" style="top:55%" *ngIf="isshowapp && SelectedApp == 'youtube'">&#64;apurwarajurkar1531</div>
+            
+            
+            <span (mouseout)="hideContactDetails()" (mouseover)="showContactDetails('email')" 
+            [ngClass]="{'appsquareanimate':isshowapp && SelectedApp == 'email'}" 
+            class="fa-regular fa-envelope contacticons appsquare" ></span>
+            <div class="apptooltip" style="top:76%" *ngIf="isshowapp && SelectedApp == 'email'">apurwaar01&#64;gmail.com</div>
+            
+           
+        </nav> 
+    </div>
+    <h4 style="margin-top: 2%;position:absolute;right:10%;font-family: 'Lobster', cursive;" >{{slogan}}</h4>
+        <div class="rightsinfo titleeffect">
+            &#64; 2024 Heartbeat Delights! <br>
+            All Rights Reserved.
+        </div>
+    </div>
+</div>
+
+
