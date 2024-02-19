@@ -1,32 +1,42 @@
 import { CommonModule } from '@angular/common';
 import { Component} from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { GalleryComponent } from './gallery/gallery.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TooltipModule } from 'primeng/tooltip';
 import { OffersComponent } from './offers/offers.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-mainpage',
   standalone: true,
-  imports: [CommonModule, AboutComponent, GalleryComponent, OffersComponent],
+  imports: [CommonModule, AboutComponent, GalleryComponent, OffersComponent,FormsModule],
   templateUrl: './mainpage.component.html',
   styleUrl: './mainpage.component.scss'
 })
 export class MainpageComponent {
   constructor(private router: Router) {}
   SelectedTab:string='';
+  feedback:string='';
   SelectedApp:string='';
   isshowapp:boolean=false;
+  isShippingDeliver:boolean=false;
+  isRefundExchange:boolean=false;
+  isPrivacyPolicy:boolean=false;
+  isRateUs:boolean=false;
+  moveuptabname:string='';
   selectedcountry:string='';
-  slogan:string='Where Every Surprise is a Delight that belongs to a Heartbeat!';
-  cta:string[]=['Shop Now','Find the Perfect Gift','About Us', 'Offers','Shipping & Delivery', 
-  'Refund & Exchange Policy','Privacy Policy','Rate Us']
+  baseimgurl:string="https://imgur.com/";
+  slogan:string=' Every Surprise is a Delight that belongs to a Heartbeat!';
+  cta:string[]=['Shop Now','Find the Perfect Gift','Shipping & Delivery', 
+  'Refund & Exchange Policy','Privacy Policy','Rate Us'];
+  user_data:string[]=['Email address',
+    'First name and last name',
+    'Phone number',
+    'Address, State, Province, ZIP/Postal code, City',
+    'Cookies and Usage Data'];
   countries:any[] = [{name:'India', cities:['Mumbai', 'Pune']},
   {name:'America',cities:['Washington','Chicago']},
-  {name:'Turkey', cities:['Istanbul','Antalya']}] 
+  {name:'Turkey', cities:['Istanbul','Antalya']}] ;
 
   ngOnInit(){
     const currentUrl: string = window.location.href;
@@ -62,10 +72,38 @@ export class MainpageComponent {
   //     }
   //   }
   // }
+  moveup(tabName:string){
+      this.moveuptabname = tabName;
+  }
+
+  movenormal(){
+    this.moveuptabname = '';
+  }
 
   showContactDetails(app:string){
     this.isshowapp = true;
     this.SelectedApp = app;
+  }
+
+  Rating(){
+    console.log(this.feedback);
+    this.isRateUs = false;
+  }
+
+  Goto(tabname:string){
+    if(tabname === 'Rate Us'){
+      this.isRateUs = true;
+    }
+    else if(tabname === 'Privacy Policy'){
+      this.isPrivacyPolicy = true;
+    }
+    else if(tabname === 'Refund & Exchange Policy'){
+      this.isRefundExchange = true;
+    }
+    else if(tabname === 'Shipping & Delivery'){
+      this.isShippingDeliver = true;
+    }
+
   }
 
   hideContactDetails(){
@@ -77,4 +115,12 @@ export class MainpageComponent {
     this.SelectedTab = tabName;
     this.router.navigate([tabName.toLowerCase()]);
   }
+
+  closethetab(){
+    this.isShippingDeliver=false;
+    this.isRefundExchange=false;
+    this.isPrivacyPolicy = false;
+    this.isRateUs = false;
+  }
+
 }

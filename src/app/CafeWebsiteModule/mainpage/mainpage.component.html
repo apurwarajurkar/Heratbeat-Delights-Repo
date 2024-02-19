@@ -1,11 +1,11 @@
-<div class="main-container">
+<div class="main-container" [ngStyle]="{'opacity': isRefundExchange || isShippingDeliver || isPrivacyPolicy || isRateUs ?0.4:1}">
     <div class="container">
         <div class="titleeffect" style=" font-family: 'Lobster', cursive;display: flex;cursor:text; user-select:none; margin-left: 20px;font-size: 1.4em;">Heartbeat Delights!</div>
         <nav class="navigation-bar">
-            <span [ngClass]="{'highlight':SelectedTab == 'home'}" (click)="selectTab('home')" class="contacticons">Home</span>
-            <span [ngClass]="{'highlight':SelectedTab == 'about_us'}" (click)="selectTab('about_us')" class="contacticons">About us</span>
-            <span [ngClass]="{'highlight':SelectedTab == 'offers'}" (click)="selectTab('offers')" class="contacticons">Offers</span>
-            <span [ngClass]="{'highlight':SelectedTab == 'gallery'}" (click)="selectTab('gallery')" class="contacticons">Gallery</span>
+            <span [ngClass]="{'highlight':SelectedTab === 'home','moveup':moveuptabname === 'home'}"(mouseover)="moveup('home')" (mouseout)="movenormal()" (click)="selectTab('home')" class="contacticons">Home</span>
+            <span [ngClass]="{'highlight':SelectedTab === 'about_us', 'moveup':moveuptabname === 'about_us'}" (mouseover)="moveup('about_us')" (mouseout)="movenormal()" (click)="selectTab('about_us')" class="contacticons">About us</span>
+            <span [ngClass]="{'highlight':SelectedTab === 'offers','moveup':moveuptabname === 'offers'}" (mouseover)="moveup('offers')" (mouseout)="movenormal()" (click)="selectTab('offers')" class="contacticons">Offers</span>
+            <span [ngClass]="{'highlight':SelectedTab === 'gallery','moveup':moveuptabname === 'gallery'}"(mouseover)="moveup('gallery')" (mouseout)="movenormal()" (click)="selectTab('gallery')" class="contacticons">Gallery</span>
         </nav>
     </div>
    
@@ -39,12 +39,15 @@
                     <div class="heading"><h3>Welcome to Heartbeat Delights!</h3></div>
                     <div class="para">Find the perfect gift for every occasion at Heartbeat Delights. Whether it's a birthday, anniversary, or Valentine's Day, we have curated a selection of thoughtful and personalized gifts that are sure to delight your loved ones.</div>
                 </div>
-                <div class="menuimg image"></div>
+                <div class="menuimg image" style="width:14.2%; padding: 5px; right:15%">
+                    <img src="https://imgur.com/wdYNgIi.jpeg" alt="welcome">
+                </div>
             </div>
             
             <div class="ambience">
-                <div class="ambimg image">
-                <img src="https://github.com/apurwarajurkar/WebsiteRepo/blob/main/images/Greeting_Card.jpeg" alt="card"></div>
+                <div class="ambimg image" style="width: 15%;">
+                <img src="https://i.imgur.com/3VcPzfv.jpeg"  alt="greeting card">
+                </div>
                 <div class="description amgdescription">
                     <div class="heading"><h3>Customizable Greeting Cards: Make Every Message Memorable</h3></div>
                     <div class="para">Create a lasting impression with our customizable greeting cards. Personalize your message and add a touch of love and creativity to your gift. Our unique cards are designed to convey your heartfelt sentiments in a special way.</div>
@@ -56,10 +59,13 @@
                     <div class="heading"><h3>Gifts for Her: Thoughtful Treasures</h3></div>
                     <div class="para">Explore our collection of gifts for her, featuring elegant jewelry, accessories, and pampering treats. From dainty earrings to luxurious perfumes, we have the perfect gifts to make her feel cherished and adored.</div>
                 </div>
-                <div class="menuimg image"></div>
+                <div class="menuimg image" style="width: 14.8%; padding: 5px;">
+                    <img src="https://imgur.com/DZIqSZK.jpeg" alt="girls gift">
+                </div>
             </div>
             <div class="ambience">
-                <div class="ambimg image">
+                <div class="ambimg image" style="width: 24.2%;padding: 5px;left:6%">
+                    <img src="https://imgur.com/kVudkIJ.jpeg" alt="boys gift">
                 </div>
                 <div class="description amgdescription">
                     <div class="heading"><h3>Gifts for Him: Stylish Surprises</h3></div>
@@ -81,13 +87,14 @@
       <div class="contactinfo">
         <div class="CTA">
             <div><h3>Explore Delights</h3></div>
-            <div class="ctaitems" *ngFor="let item of cta"><a style="padding:2px; text-decoration:none; color:white;" href="">{{item}}</a></div>
+            <div class="ctaitems" *ngFor="let item of cta">
+                <span class="bullet"></span>
+                <span style="padding:2px; text-decoration:none; color:white; cursor: pointer; user-select: none;" 
+                (click)="Goto(item)" href="">{{item}}</span></div>
         </div>
         <div class="contactus">
             <div><h3>Contact Us</h3></div>
             <div></div>
-        
-        
         <nav class="icons">
             <span (mouseout)="hideContactDetails()" (mouseover)="showContactDetails('instagram')"
              [ngClass]="{'appsquareanimate':isshowapp && SelectedApp == 'instagram'}" 
@@ -122,6 +129,67 @@
             All Rights Reserved.
         </div>
     </div>
+    
 </div>
+<ng-container>
+    <div *ngIf="isShippingDeliver" class="middlecontainer" style="height: 300px; overflow-y: scroll;">
+        <h4  class="middletitle">Shipping And Delivery</h4>
+        <span class="close" (click)="closethetab()"><img src="https://imgur.com/yGeTXLO.jpeg" style="width: 20px;height: 20px;" alt=""></span>
+        <div class="policies">At 'Heartbeat Delights', we are committed to providing you with a seamless and convenient shopping experience. Here's everything you need to know about our shipping and delivery process:</div>
+        <h4 class="middletitle">Shipping Locations</h4>
+        <div class="policies">We currently offer shipping to [Thane, Mumbai, Pune]. If your location is not listed, please contact us, and we'll do our best to accommodate your request</div>
+        <h4 class="middletitle">Shipping Fees</h4>
+        <div class="policies">Shipping fees are calculated based on the weight of your order, shipping method selected, and delivery destination. You can view the shipping fees for your order during the checkout process before making a payment.</div>
+        <h4 class="middletitle">Order Processing Time</h4>
+        <div class="policies">Orders are typically processed and shipped within 3 to 5 business days after payment confirmation. Please note that processing times may vary during peak seasons or holidays.</div>
+        <h4 class="middletitle">Delivery</h4>
+        <div class="policies">Our delivery partners strive to deliver your order to your doorstep in a timely manner. However, please note that delivery times may vary depending on factors such as weather conditions, customs clearance, and remote delivery locations.</div>
+        <h4 class="middletitle">Contact Us</h4>
+        <div class="policies">If you have any questions about our shipping and delivery process, please contact us at [Your Contact Information]. Our customer service team is here to assist you with any inquiries or concerns you may have.</div>
+        <h4 class="middletitle">We Appreciate you order minimum 3 days Prior Delivery. Thank You !</h4>
+    </div>
+    <div *ngIf="isRefundExchange" class="middlecontainer" style="height: 300px; overflow-y: scroll;">
+        <h4  class="middletitle">Refund And Exchange Policy</h4>
+        <span class="close" (click)="closethetab()"><img src="https://imgur.com/yGeTXLO.jpeg" style="width: 20px;height: 20px;" alt=""></span>
+        <div class="policies">At 'Heartbeat Delights', we strive to ensure your complete satisfaction with every purchase. If, for any reason, you are not entirely satisfied with your purchase, we're here to help.</div>
+        <h4 class="middletitle">Refunds</h4>
+        <div class="policies">We offer refunds on products returned within [number of days] days of the original purchase date. To be eligible for a refund, your item must be unused, in the same condition that you received it, and in its original packaging. You must also provide proof of purchase, such as your order number or receipt.</div>
+        <div class="policies">Once we receive your returned item, we will inspect it and notify you that we have received your returned item. We will immediately notify you on the status of your refund after inspecting the item.</div>
+        <div class="policies">If your return is approved, we will initiate a refund to your original method of payment. You will receive the credit within a certain amount of days, depending on your card issuer's policies.</div>
+        <h4 class="middletitle">Exchanges</h4>
+        <div class="policies">We also offer exchanges for products returned within [number of days] days of the original purchase date. To be eligible for an exchange, your item must be unused, in the same condition that you received it, and in its original packaging. You must also provide proof of purchase, such as your order number or receipt.</div>
+        <div class="policies">If you need to exchange an item for the same item, contact us to initiate the exchange process. Once your exchange is approved, we will provide instructions for returning the original item and receiving the exchanged item.</div>
+        <h4 class="middletitle">Contact Us</h4>
+        <div class="policies">If you have any questions about our refund and exchange policy, please contact us at [Your Contact Information].</div>
+    </div>
+    <div *ngIf="isPrivacyPolicy" class="middlecontainer" style="height: 300px; overflow-y: scroll;">
+        <h4  class="middletitle">Privacy Policy</h4>
+        <span class="close" (click)="closethetab()"><img src="https://imgur.com/yGeTXLO.jpeg" style="width: 20px;height: 20px;" alt=""></span>
+        <div class="policies"> We may collect several different types of information for various purposes to provide and improve our Service to you.</div>
+        <div class="policies"> While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you ("Personal Data"). Personally identifiable information may include, but is not limited to:</div>
+        <div class="userdata" *ngFor="let item of user_data">{{item}}</div>
+        <h4 class="middletitle">No Resell Policy</h4>
+        <div class="policies">'Heartbeat Delights' strictly prohibits the resale of our products by customers or any third parties. Our products are intended for personal use only and are not authorized for resale without prior written consent from us.</div>
+        <div class="policies">By purchasing our products, you agree to adhere to this policy and acknowledge that any unauthorized resale may result in legal action. We reserve the right to refuse service to individuals or entities found to be engaging in the unauthorized resale of our products.</div>
+        <div class="policies">If you have any questions or concerns regarding our resell policy, please contact us.</div>
+    </div>
+    <div *ngIf="isRateUs" class="middlecontainer" style="height: 70%;">
+        <h4  class="middletitle">Rate Us</h4>
+        <span class="close" (click)="closethetab()"><img src="https://imgur.com/yGeTXLO.jpeg" style="width: 20px;height: 20px;" alt=""></span>
+        <div class="midcontent" style="margin-top: 0px;">
+            <div class="stars">
+                <input type="radio" id="star1" name="stars" value="1"><label style="user-select: none;" for="star1"></label>
+                <input type="radio" id="star2" name="stars" value="2"><label style="user-select: none;" for="star2"></label>
+                <input type="radio" id="star3" name="stars" value="3"><label style="user-select: none;" for="star3"></label>
+                <input type="radio" id="star4" name="stars" value="4"><label style="user-select: none;" for="star4"></label>
+                <input type="radio" id="star5" name="stars" value="5"><label style="user-select: none;" for="star5"></label>
+            </div>   
+            <div class="stars" style="font-weight: bolder;"><span>5</span> <span>4</span><span>3</span> <span>2</span> <span>1</span></div>             
+            <div class="feedback"><span class="bullet" style="background-color: #FF1694;"></span> Please give your feedback here.</div>
+            <div class="midtextbox"><textarea [(ngModel)]="feedback" name="question" id="question" cols="5" rows="1" maxlength="500"></textarea></div>
+            <div class="midbtn"><button type="Submit" (click)="Rating()"><h3>Submit</h3></button></div>
+        </div>
+    </div>
+</ng-container>
 
 

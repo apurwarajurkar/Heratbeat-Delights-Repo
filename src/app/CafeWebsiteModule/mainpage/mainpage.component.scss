@@ -48,7 +48,7 @@
     color: white;
     position: sticky;
     text-decoration: none;
-    border-bottom: 2px solid #FF1694;
+    border-bottom: 2px solid #9a8891;
 }
 .getstarted{
     display: block;
@@ -88,7 +88,7 @@
     height:60vh;
     border:2px solid white;
     border-radius: 0.3em;
-    background-color: #F25278;
+    background-color: #FF1694;
     color: white;
     position: relative;
     bottom: 0;
@@ -196,10 +196,10 @@
     display:flex;
 }
 .ambimg{
-    left:4%;
+    left:15%;
 }
 .menuimg{
-    right:4%;
+    right:15%;
 }
 .heading{
     text-align: center;
@@ -207,4 +207,131 @@
 }
 .para{
     margin: 2%;
+}
+
+.bullet {
+    display: inline-block;
+    width: 10px;
+    height: 10px; 
+    border-radius: 50%; 
+    background-color: white; 
+    margin-right: 5px;
+}
+
+.moveup{
+    transition: all 0.2s ease;
+    transform: translateY(-3px);
+}
+.middlecontainer{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left:25%;
+    top:10%;
+    width:50%;
+    background-color: black;
+    border:5px solid #FF1694;
+    border-radius: 0.2em;
+    opacity: 1;
+    color:#FF1694;
+}
+.middletitle{
+    align-items:center;
+    font-weight: 500px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin:10px;
+}
+.midcontent{
+    margin:10px;
+    display: flex;
+    flex-direction: column;
+}
+.midtextbox{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    border: 2px solid #FF1694 ;
+    height:120px;
+    font-family: sans-serif;
+    font-size: large;
+    width: 95%;
+}
+textarea{
+    width: 100%; 
+    font-family: sans-serif;
+    font-size:large;
+    color: #FF1694;
+    height: 100%;
+    max-height: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+}
+.stars{
+    width:80%;
+    margin-left: 10%;
+    margin-bottom: 2%;
+    justify-content: space-evenly;
+    justify-self: center;
+    justify-items: center;
+    display: inline-flex;
+    height:10%;
+    align-items: center;
+
+}
+.stars label::before{
+    content: '★';
+    
+}
+.stars input{
+    display: none;
+}
+.stars label {
+    font-size: 30px;
+    color: #ddd;
+    cursor: pointer;
+}
+
+.stars input:checked ~ label {
+    color: #FF1694;
+}
+.close{
+    position: absolute;
+    width:40px;
+    height:40px;
+    right:0;
+    top:3px;
+    cursor: pointer;
+}
+.midbtn{
+    display: flex;
+    width: 80px;
+    height:30px;
+    background-color: white;
+    border:3px solid #FF1694;
+    justify-self: center;
+    justify-content: center;
+    align-self: center;
+}
+// ::-webkit-scrollbar {
+//     width: 0px; /* Adjust the width as desired */
+//   }
+button{
+    width: 100%;
+    height: 100%;
+    color: #FF1694;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.policies{
+    margin:10px;
+}
+.userdata{
+    display: flex;
+    margin: 5px;
 }
